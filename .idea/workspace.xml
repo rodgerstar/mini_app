@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="customer and deposits model">
-      <change afterPath="$PROJECT_DIR$/templates/customers.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/master.html" afterDir="false" />
+    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="master and customer html">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sacco/management/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sacco/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sacco/management/commands/populate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sacco/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sacco/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/customers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -51,12 +53,15 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
     "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/Admin/PycharmProjects/database/sacco/management/commands",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,6 +70,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\PycharmProjects\database\sacco\management\commands" />
+      <recent name="C:\Users\Admin\PycharmProjects\database\sacco\management" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="database" type="Python.DjangoServer" factoryName="Django server">
       <module name="database" />
@@ -108,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1731598160618</updated>
       <workItem from="1731598220421" duration="15030000" />
-      <workItem from="1731760844619" duration="4767000" />
+      <workItem from="1731760844619" duration="7228000" />
     </task>
     <task id="LOCAL-00001" summary="customer and deposits model">
       <option name="closed" value="true" />
@@ -118,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731717341933</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="master and customer html">
+      <option name="closed" value="true" />
+      <created>1731765767866</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731765767866</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +145,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="customer and deposits model" />
-    <option name="LAST_COMMIT_MESSAGE" value="customer and deposits model" />
+    <MESSAGE value="master and customer html" />
+    <option name="LAST_COMMIT_MESSAGE" value="master and customer html" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sacco/management/commands/populate.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
