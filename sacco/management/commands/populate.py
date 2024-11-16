@@ -6,7 +6,7 @@ from sacco.views import customers
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        customers = [{"id":1,"first_name":"Norah","last_name":"Lambswood","email":"nlambswood0@youtu.be","gender":"Female","weight":93,"dob":"2005-08-27"},
+        customers_data = [{"id":1,"first_name":"Norah","last_name":"Lambswood","email":"nlambswood0@youtu.be","gender":"Female","weight":93,"dob":"2005-08-27"},
 {"id":2,"first_name":"Lane","last_name":"Everall","email":"leverall1@wisc.edu","gender":"Male","weight":81,"dob":"2006-04-03"},
 {"id":3,"first_name":"Clayson","last_name":"Denekamp","email":"cdenekamp2@qq.com","gender":"Male","weight":83,"dob":"2005-08-14"},
 {"id":4,"first_name":"Derwin","last_name":"Crinidge","email":"dcrinidge3@nature.com","gender":"Male","weight":87,"dob":"2002-03-30"},
@@ -106,9 +106,11 @@ class Command(BaseCommand):
 {"id":98,"first_name":"Salem","last_name":"Shenton","email":"sshenton2p@yahoo.co.jp","gender":"Male","weight":90,"dob":"1999-03-28"},
 {"id":99,"first_name":"Deck","last_name":"Northen","email":"dnorthen2q@free.fr","gender":"Male","weight":85,"dob":"2002-06-07"},
 {"id":100,"first_name":"Devin","last_name":"Glasheen","email":"dglasheen2r@howstuffworks.com","gender":"Male","weight":94,"dob":"2001-10-09"}]
-        for c in customers:
+        for c in customers_data:
             customer = Customer(**c)
             customer.save()
         self.stdout.write(
             self.style.SUCCESS('Successfully populated.')
         )
+
+        print("populated successfully")

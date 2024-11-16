@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from sacco.models import Customer, Deposit
 
@@ -29,6 +29,15 @@ from sacco.models import Customer, Deposit
     #
     # return HttpResponse(f"OK, Done, we have {customer_count} customers and {deposit_count} deposits")
 def customers(request):
-    data = Customer.objects.all()
+    customers_data = Customer.objects.all()
 
-    return render(request, 'customers.html', {'Customers':data})
+    return render(request, 'customers.html', {'Customers':customers_data})
+
+
+def delete_customer(request, customer_id):
+    customers_data = Customer.objects.get(id=customer_id)
+    customers_data.delete()
+    return redirect('customers')
+
+  # Check if all IDs are populated
+

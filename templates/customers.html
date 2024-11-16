@@ -17,6 +17,7 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Joining Date</th>
+                <th>Delete</th>
             </tr>
             
             {% for Customer in Customers %}
@@ -26,6 +27,9 @@
                     <td>{{ Customer.last_name }}</td>
                     <td>{{ Customer.email }}</td>
                     <td>{{ Customer.created_at }}</td>
+                    <td>
+                        <a class="btn btn-danger" href="{% url 'delete_customer' Customer.id %}">Delete</a>
+                    </td>
                 </tr>
             	
             {% empty %}

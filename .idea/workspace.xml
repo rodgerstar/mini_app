@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="master and customer html">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sacco/management/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sacco/management/commands/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sacco/management/commands/populate.py" afterDir="false" />
+    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="added populate command">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sacco/management/commands/populate.py" beforeDir="false" afterPath="$PROJECT_DIR$/sacco/management/commands/populate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sacco/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sacco/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/customers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +54,7 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.database.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
@@ -84,6 +84,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="database.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -119,7 +120,7 @@
       <option name="presentableId" value="Default" />
       <updated>1731598160618</updated>
       <workItem from="1731598220421" duration="15030000" />
-      <workItem from="1731760844619" duration="7228000" />
+      <workItem from="1731760844619" duration="18684000" />
     </task>
     <task id="LOCAL-00001" summary="customer and deposits model">
       <option name="closed" value="true" />
@@ -137,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731765767866</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added populate command">
+      <option name="closed" value="true" />
+      <created>1731768867115</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731768867115</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,17 +155,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="customer and deposits model" />
     <MESSAGE value="master and customer html" />
-    <option name="LAST_COMMIT_MESSAGE" value="master and customer html" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sacco/management/commands/populate.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="added populate command" />
+    <option name="LAST_COMMIT_MESSAGE" value="added populate command" />
   </component>
 </project>
