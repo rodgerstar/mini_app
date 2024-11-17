@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -29,9 +30,15 @@ from sacco.models import Customer, Deposit
     #
     # return HttpResponse(f"OK, Done, we have {customer_count} customers and {deposit_count} deposits")
 def customers(request):
-    customers_data = Customer.objects.all()
+    customers_data = Customer.objects.all().order_by('id').values()
+    paginator = Paginator(customers_data, 15)
+    page_number = request.GET.get('page', 1)
+    try:
+        paginated_data = paginator.page(page_number)
+    except PageNotAnInteger:
+        paginated_data = paginator.page(1)
 
-    return render(request, 'customers.html', {'Customers':customers_data})
+    return render(request, 'customers.html', {'data':paginated_data})
 
 
 def delete_customer(request, customer_id):
@@ -41,3 +48,7 @@ def delete_customer(request, customer_id):
 
   # Check if all IDs are populated
 
+def customer_detail(request, customer_id):
+    customer = Customer.objects.get(id=customer_id)
+    deposits = Deposit.objects.filter(customer_id=customer_id)
+    return render(request, "details.html", {"deposits": deposits, "customer": customer})
