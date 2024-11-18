@@ -2,6 +2,7 @@ from django.core.paginator import Paginator, PageNotAnInteger
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from sacco.app_forms import CustomerForm
 from sacco.models import Customer, Deposit
 
 
@@ -52,3 +53,8 @@ def customer_detail(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
     deposits = Deposit.objects.filter(customer_id=customer_id)
     return render(request, "details.html", {"deposits": deposits, "customer": customer})
+
+
+def add_customer(request):
+    form = CustomerForm()
+    return render(request, 'customer_form.html' , {'form': form})
