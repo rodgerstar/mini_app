@@ -56,5 +56,11 @@ def customer_detail(request, customer_id):
 
 
 def add_customer(request):
-    form = CustomerForm()
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('customers')
+    else:
+        form = CustomerForm()
     return render(request, 'customer_form.html' , {'form': form})
