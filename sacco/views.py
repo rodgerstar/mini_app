@@ -31,7 +31,7 @@ from sacco.models import Customer, Deposit
     #
     # return HttpResponse(f"OK, Done, we have {customer_count} customers and {deposit_count} deposits")
 def customers(request):
-    customers_data = Customer.objects.all().order_by('id').values()
+    customers_data = Customer.objects.all().order_by('-id').values()
     paginator = Paginator(customers_data, 15)
     page_number = request.GET.get('page', 1)
     try:
