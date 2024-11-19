@@ -1,6 +1,7 @@
-from django.core.paginator import Paginator, PageNotAnInteger
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from sacco.app_forms import CustomerForm
 from sacco.models import Customer, Deposit
@@ -31,8 +32,8 @@ from sacco.models import Customer, Deposit
     #
     # return HttpResponse(f"OK, Done, we have {customer_count} customers and {deposit_count} deposits")
 def customers(request):
-    customers_data = Customer.objects.all().order_by('-id').values()
-    paginator = Paginator(customers_data, 15)
+    data = Customer.objects.all().order_by('-id').values()
+    paginator = Paginator(data, 15)
     page_number = request.GET.get('page', 1)
     try:
         paginated_data = paginator.page(page_number)
@@ -64,3 +65,38 @@ def add_customer(request):
     else:
         form = CustomerForm()
     return render(request, 'customer_form.html' , {'form': form})
+
+
+def update_customer(request, customer_id):
+    customer = get_object_or_404(Customer, id=customer_id)
+    if request.method == 'POST':
+        form = CustomerForm(request.POST, instance=customer)
+        if form.is_valid():
+            form.save()
+            return redirect('customers')  # Redirect to the customers list after saving
+    else:
+        form = CustomerForm(instance=customer)  # Pre-fill form with customer data for GET request
+
+    # Pass customer_id to the template context
+    return render(request, 'customer_update_form.html', {'form': form, 'customer_id': customer_id})
+
+
+def search_customer(request):
+    search_term = request.GET.get('search', '')  # Default to an empty string if no search term
+    data = Customer.objects.filter(
+        Q(first_name__icontains=search_term) |
+        Q(last_name__icontains=search_term) |
+        Q(email__icontains=search_term)
+    ).order_by('-id')  # Add order to results for consistency
+
+    paginator = Paginator(data, 15)  # Paginate the search results
+    page_number = request.GET.get('page', 1)
+
+    try:
+        paginated_data = paginator.page(page_number)
+    except PageNotAnInteger:
+        paginated_data = paginator.page(1)
+    except EmptyPage:
+        paginated_data = paginator.page(paginator.num_pages)
+
+    return render(request, 'search.html', {'data': paginated_data, 'search_term': search_term})
