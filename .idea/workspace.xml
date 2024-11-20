@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="added -id to arrange customers in descending order">
-      <change afterPath="$PROJECT_DIR$/templates/customer_update_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="search operation">
+      <change afterPath="$PROJECT_DIR$/templates/deposit_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sacco/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/sacco/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sacco/app_forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/sacco/app_forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sacco/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/sacco/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sacco/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sacco/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/customer_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customer_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/customers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/customers.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/master.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/master.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +128,7 @@
       <option name="presentableId" value="Default" />
       <updated>1731598160618</updated>
       <workItem from="1731598220421" duration="15030000" />
-      <workItem from="1731760844619" duration="74690000" />
+      <workItem from="1731760844619" duration="79950000" />
     </task>
     <task id="LOCAL-00001" summary="customer and deposits model">
       <option name="closed" value="true" />
@@ -200,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731967710283</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="search operation">
+      <option name="closed" value="true" />
+      <created>1732055700723</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1732055700723</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +217,7 @@
     <MESSAGE value="customer forms, with crispy designs" />
     <MESSAGE value="csrf token to  forms" />
     <MESSAGE value="added -id to arrange customers in descending order" />
-    <option name="LAST_COMMIT_MESSAGE" value="added -id to arrange customers in descending order" />
+    <MESSAGE value="search operation" />
+    <option name="LAST_COMMIT_MESSAGE" value="search operation" />
   </component>
 </project>

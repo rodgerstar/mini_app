@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 
-from sacco.app_forms import CustomerForm
+from sacco.app_forms import CustomerForm, DepositForm
 from sacco.models import Customer, Deposit
 
 
@@ -100,3 +100,21 @@ def search_customer(request):
         paginated_data = paginator.page(paginator.num_pages)
 
     return render(request, 'search.html', {'data': paginated_data, 'search_term': search_term})
+
+
+def deposit(request, customer_id):
+    # Fetch the customer or return a 404 error if not found
+    customer = get_object_or_404(Customer, id=customer_id)
+
+    if request.method == 'POST':
+        form = DepositForm(request.POST)  # Bind the submitted data to the form
+        if form.is_valid():
+            deposit = form.save(commit=False)  # Save the deposit instance but don’t commit yet
+            deposit.customer = customer  # Associate the deposit with the fetched customer
+            deposit.save()  # Save to the database
+            return redirect('customers')  # Redirect to the customer's detail page
+    else:
+        form = DepositForm()  # Instantiate an empty form for a GET request
+
+    # Render the deposit form with the customer context
+    return render(request, 'deposit_form.html', {'form': form, 'customer': customer})

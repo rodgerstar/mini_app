@@ -18,6 +18,7 @@
                     <th>Delete</th>
                     <th>Details</th>
                     <th>Update</th>
+                    <th>Deposit</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +37,9 @@
                         </td>
                         <td>
                            <a class="btn btn-success" href="{% url 'update_customer' Customer.id %}">Update</a>
+                        </td>
+                        <td>
+                           <a class="btn btn-primary" href="{% url 'deposit' Customer.id %}">Deposit</a>
                         </td>
                         
                     </tr>

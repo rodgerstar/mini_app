@@ -1,6 +1,6 @@
 from django import forms
 
-from sacco.models import Customer
+from sacco.models import Customer, Deposit
 
 GENDER_CHOICES = (
     ('Male', 'Male'),
@@ -18,3 +18,15 @@ class CustomerForm(forms.ModelForm):
             'weight' : forms.NumberInput(attrs={'type':'number', 'min':'10', 'max':'1000'}),
             'gender': forms.Select(choices=GENDER_CHOICES),
         }
+
+class DepositForm(forms.ModelForm):
+    class Meta:
+        model = Deposit
+        fields = ['amount']
+
+        widgets = {
+            'amount' : forms.NumberInput(attrs={'type':'number', 'min':'10', 'max':'1000000'}),
+        }
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=50)
+    password = forms.CharField(widget=forms.PasswordInput)
