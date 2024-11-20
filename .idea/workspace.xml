@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="added login form">
+    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="login/logout logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sacco/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sacco/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login_form.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +125,7 @@
       <option name="presentableId" value="Default" />
       <updated>1731598160618</updated>
       <workItem from="1731598220421" duration="15030000" />
-      <workItem from="1731760844619" duration="83795000" />
+      <workItem from="1731760844619" duration="85298000" />
     </task>
     <task id="LOCAL-00001" summary="customer and deposits model">
       <option name="closed" value="true" />
@@ -215,7 +215,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732075735114</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="login/logout logic">
+      <option name="closed" value="true" />
+      <created>1732077237018</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1732077237018</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +241,7 @@
     <MESSAGE value="search operation" />
     <MESSAGE value="add deposits" />
     <MESSAGE value="added login form" />
-    <option name="LAST_COMMIT_MESSAGE" value="added login form" />
+    <MESSAGE value="login/logout logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="login/logout logic" />
   </component>
 </project>

@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.http import HttpResponse
@@ -32,7 +33,8 @@ from sacco.models import Customer, Deposit
     #
     # deposit_count = Deposit.objects.count()
     #
-    # return HttpResponse(f"OK, Done, we have {customer_count} customers and {deposit_count} deposits")
+  # return HttpResponse(f"OK, Done, we have {customer_count} customers and {deposit_count} deposits")
+@login_required
 def customers(request):
     data = Customer.objects.all().order_by('-id').values()
     paginator = Paginator(data, 15)
@@ -44,20 +46,20 @@ def customers(request):
 
     return render(request, 'customers.html', {'data':paginated_data})
 
-
+@login_required
 def delete_customer(request, customer_id):
     customers_data = Customer.objects.get(id=customer_id)
     customers_data.delete()
     return redirect('customers')
 
   # Check if all IDs are populated
-
+@login_required
 def customer_detail(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
     deposits = Deposit.objects.filter(customer_id=customer_id)
     return render(request, "details.html", {"deposits": deposits, "customer": customer})
 
-
+@login_required
 def add_customer(request):
     if request.method == 'POST':
         form = CustomerForm(request.POST)
@@ -68,7 +70,7 @@ def add_customer(request):
         form = CustomerForm()
     return render(request, 'customer_form.html' , {'form': form})
 
-
+@login_required
 def update_customer(request, customer_id):
     customer = get_object_or_404(Customer, id=customer_id)
     if request.method == 'POST':
@@ -82,7 +84,7 @@ def update_customer(request, customer_id):
     # Pass customer_id to the template context
     return render(request, 'customer_update_form.html', {'form': form, 'customer_id': customer_id})
 
-
+@login_required
 def search_customer(request):
     search_term = request.GET.get('search', '')  # Default to an empty string if no search term
     data = Customer.objects.filter(
@@ -103,7 +105,7 @@ def search_customer(request):
 
     return render(request, 'search.html', {'data': paginated_data, 'search_term': search_term})
 
-
+@login_required
 def deposit(request, customer_id):
     # Fetch the customer or return a 404 error if not found
     customer = get_object_or_404(Customer, id=customer_id)
@@ -137,6 +139,7 @@ def login_user(request):
                 return redirect('customers')
         # messages.error(request, 'Invalid username or password.')
         return render(request, 'login_form.html', {"form": form})
+@login_required
 def signout_user(request):
     logout(request)
     return redirect('login')
