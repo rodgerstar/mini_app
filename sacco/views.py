@@ -1,7 +1,9 @@
+from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+from pyexpat.errors import messages
 
 from sacco.app_forms import CustomerForm, DepositForm, LoginForm
 from sacco.models import Customer, Deposit
@@ -121,9 +123,20 @@ def deposit(request, customer_id):
 
 
 def login_user(request):
-    form = LoginForm()
-    return render(request, 'login_form.html', {"form": form} )
-
-
+    if request.method == 'GET':
+        form = LoginForm()
+        return render(request, 'login_form.html', {"form": form} )
+    elif request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user :
+                login(request, user)
+                return redirect('customers')
+        # messages.error(request, 'Invalid username or password.')
+        return render(request, 'login_form.html', {"form": form})
 def signout_user(request):
-    return None
+    logout(request)
+    return redirect('login')

@@ -20,7 +20,7 @@
                 <form action="{% url 'login' %}" method="POST" class="shadow p-3 mb-5 bg-white rounded">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <button class="btn btn-info rounded-2 w-100">Sign In</button>
+                    <button class="btn btn-dark rounded-2 w-100">Sign In</button>
                 </form>
             </div>
         </div>
