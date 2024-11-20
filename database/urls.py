@@ -31,6 +31,10 @@ urlpatterns = [
 
     path('customers/update/<int:customer_id>', views.update_customer, name='update_customer'),
 
+    path('login', views.login_user, name='login'),
+
+    path('logout', views.signout_user, name='logout'),
+
     path('customer-details/<int:customer_id>/', views.customer_detail, name='customer_detail'),
 
     path('customer/search', views.search_customer, name='search_customer'),
