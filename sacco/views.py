@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q, Sum
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from pyexpat.errors import messages
+from django.contrib import messages
 
 from sacco.app_forms import CustomerForm, DepositForm, LoginForm
 from sacco.models import Customer, Deposit
@@ -50,7 +50,9 @@ def customers(request):
 @permission_required("sacco.delete_customer", raise_exception=True)
 def delete_customer(request, customer_id):
     customers_data = Customer.objects.get(id=customer_id)
+    first_name = customers_data.first_name  # Access the instance's first_name
     customers_data.delete()
+    messages.info(request, f"Customer {first_name} deleted successfully")
     return redirect('customers')
 
   # Check if all IDs are populated
@@ -72,6 +74,7 @@ def add_customer(request):
         form = CustomerForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, f'Customer{form.cleaned_data['first_name']} added successfully')
             return redirect('customers')
     else:
         form = CustomerForm()
@@ -85,6 +88,7 @@ def update_customer(request, customer_id):
         form = CustomerForm(request.POST, request.FILES, instance=customer)
         if form.is_valid():
             form.save()
+            messages.success(request, f'Customer {form.cleaned_data['first_name']} updated successfully')
             return redirect('customers')  # Redirect to the customers list after saving
     else:
         form = CustomerForm(instance=customer)  # Pre-fill form with customer data for GET request
@@ -126,11 +130,13 @@ def deposit(request, customer_id):
             deposit = form.save(commit=False)  # Save the deposit instance but don’t commit yet
             deposit.customer = customer  # Associate the deposit with the fetched customer
             deposit.save()  # Save to the database
+            messages.success(request, 'Your deposit has been successfully added!')
             return redirect('customers')  # Redirect to the customer's detail page
     else:
         form = DepositForm()  # Instantiate an empty form for a GET request
 
     # Render the deposit form with the customer context
+
     return render(request, 'deposit_form.html', {'form': form, 'customer': customer})
 
 
