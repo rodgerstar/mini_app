@@ -1,6 +1,12 @@
-from django.db import models
+import os.path
 
+from django.db import models
+import uuid
 # Create your models here.
+def generate_unique_names(instance, filename):
+    name = uuid.uuid4()
+    full_file_name = f"{name}-{filename}"
+    return os.path.join("profile_pictures", full_file_name)
 
 class Customer(models.Model):
     first_name = models.CharField(max_length=50)
@@ -9,6 +15,7 @@ class Customer(models.Model):
     dob = models.DateField()
     gender = models.CharField(max_length=10)
     weight = models.IntegerField(default=0)
+    profile_pic = models.ImageField(upload_to=generate_unique_names, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

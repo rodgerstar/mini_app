@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.db.models import Q
+from django.db.models import Q, Sum
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from pyexpat.errors import messages
@@ -47,6 +47,7 @@ def customers(request):
     return render(request, 'customers.html', {'data':paginated_data})
 
 @login_required
+@permission_required("sacco.delete_customer", raise_exception=True)
 def delete_customer(request, customer_id):
     customers_data = Customer.objects.get(id=customer_id)
     customers_data.delete()
@@ -54,15 +55,21 @@ def delete_customer(request, customer_id):
 
   # Check if all IDs are populated
 @login_required
+@permission_required("sacco.view_customer", raise_exception=True)
 def customer_detail(request, customer_id):
     customer = Customer.objects.get(id=customer_id)
     deposits = Deposit.objects.filter(customer_id=customer_id)
-    return render(request, "details.html", {"deposits": deposits, "customer": customer})
+    total = (
+            Deposit.objects.filter(customer=customer, status=True)
+            .aggregate(total=Sum('amount'))['total'] or 0  # Access the key correctly
+    )
+    return render(request, "details.html", {"deposits": deposits, "customer": customer, "total":total})
 
 @login_required
+@permission_required("sacco.add_customer", raise_exception=True)
 def add_customer(request):
     if request.method == 'POST':
-        form = CustomerForm(request.POST)
+        form = CustomerForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('customers')
@@ -71,10 +78,11 @@ def add_customer(request):
     return render(request, 'customer_form.html' , {'form': form})
 
 @login_required
+@permission_required("sacco.change_customer", raise_exception=True)
 def update_customer(request, customer_id):
     customer = get_object_or_404(Customer, id=customer_id)
     if request.method == 'POST':
-        form = CustomerForm(request.POST, instance=customer)
+        form = CustomerForm(request.POST, request.FILES, instance=customer)
         if form.is_valid():
             form.save()
             return redirect('customers')  # Redirect to the customers list after saving
@@ -85,6 +93,7 @@ def update_customer(request, customer_id):
     return render(request, 'customer_update_form.html', {'form': form, 'customer_id': customer_id})
 
 @login_required
+@permission_required("sacco.view_customer", raise_exception=True)
 def search_customer(request):
     search_term = request.GET.get('search', '')  # Default to an empty string if no search term
     data = Customer.objects.filter(
@@ -106,6 +115,7 @@ def search_customer(request):
     return render(request, 'search.html', {'data': paginated_data, 'search_term': search_term})
 
 @login_required
+@permission_required("sacco.add_deposit", raise_exception=True)
 def deposit(request, customer_id):
     # Fetch the customer or return a 404 error if not found
     customer = get_object_or_404(Customer, id=customer_id)

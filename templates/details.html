@@ -7,9 +7,10 @@
 
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
+    <div class="container my-4 border rounded p-3"> <!-- Added margin for spacing -->
+        <div class="row gy-4"> <!-- Added vertical gap between rows -->
+            <!-- Customer Details Section -->
+            <div class="col-md-4">
                 <table class="table table-striped">
                     <tr>
                         <td class="h6">First Name</td>
@@ -31,28 +32,42 @@
                         <td class="h6">Weight</td>
                         <td>{{ customer.weight }}</td>
                     </tr>
+                    <tr>
+                        <td class="h6">Total Deposits</td>
+                        <td>{{ total }}</td>
+                    </tr>
                 </table>
             </div>
-            
-            <div class="col-sm-4">
-                <img src="{% static 'profile.png' %}" alt="">
+
+            <!-- Profile Picture Section -->
+            <div class="col-md-4 text-center">
+                <p class="fw-bold">Profile Picture</p>
+                {% if customer.profile_pic %}
+                    <img class="img-fluid mx-auto d-block rounded-circle profile" src="{{ customer.profile_pic.url }}" alt="Profile Picture">	
+                {% else %}
+                    <img class="img-fluid mx-auto d-block rounded-circle profile" src="{% static 'profile.png' %}" alt="Default Profile Picture">
+                {% endif %}
             </div>
-            <div class="col-sm-4">
+
+            <!-- Deposits Section -->
+            <div class="col-md-4">
                 <table class="table table-bordered">
-                    <tr>
-                        <th>Date</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                    </tr>
-                    {% for depo in deposits %}
+                    <thead class="table-light">
                         <tr>
-                            <td>{{ depo.created_at | date:"d-M-Y" }}</td>
-                            <td>{{ depo.amount }}</td>
-                            <td>{{ depo.status }}</td>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
                         </tr>
-                    {% endfor %}
-                    
-                    
+                    </thead>
+                    <tbody>
+                        {% for depo in deposits %}
+                            <tr>
+                                <td>{{ depo.created_at | date:"d-M-Y" }}</td>
+                                <td>{{ depo.amount }}</td>
+                                <td>{{ depo.status }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>
