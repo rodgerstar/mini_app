@@ -80,21 +80,29 @@ def add_customer(request):
         form = CustomerForm()
     return render(request, 'customer_form.html' , {'form': form})
 
+
 @login_required
 @permission_required("sacco.change_customer", raise_exception=True)
 def update_customer(request, customer_id):
     customer = get_object_or_404(Customer, id=customer_id)
+
     if request.method == 'POST':
         form = CustomerForm(request.POST, request.FILES, instance=customer)
+
         if form.is_valid():
+            # Handle the case where a new profile picture is uploaded
+
+                # If no new image is uploaded, save the form without touching the profile picture field
+
             form.save()
-            messages.success(request, f'Customer {form.cleaned_data['first_name']} updated successfully')
+            messages.success(request, f'Customer {form.cleaned_data["first_name"]} updated successfully')
             return redirect('customers')  # Redirect to the customers list after saving
     else:
-        form = CustomerForm(instance=customer)  # Pre-fill form with customer data for GET request
+        form = CustomerForm(instance=customer)
+    return render(request, 'customer_update_form.html', {'form': form, 'customer_id': customer_id})
+    # Pre-fill form with customer data for GET request
 
     # Pass customer_id to the template context
-    return render(request, 'customer_update_form.html', {'form': form, 'customer_id': customer_id})
 
 @login_required
 @permission_required("sacco.view_customer", raise_exception=True)
