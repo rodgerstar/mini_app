@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 from django.template.context_processors import static
@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-7mx$_9vf1n$cq*+pysdy*h3c#pz$o=-$(+-spe+8i+j6j#&^&3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -41,9 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'sacco',
+    'main',
     'crispy_forms',
     'crispy_bootstrap5',
+    'django_daraja'
 ]
 
 MIDDLEWARE = [
@@ -83,8 +84,17 @@ WSGI_APPLICATION = 'database.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':  'library_db',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+            'sql_mode': 'STRICT_TRANS_TABLES',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 
@@ -123,11 +133,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'assets/'
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'assets'
 
-STATICFILES_DIRS = [BASE_DIR / 'sacco/static']
+STATICFILES_DIRS = [BASE_DIR / 'main/assets']
 
 MEDIA_URL = '/media/'
 
@@ -152,3 +162,42 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+MPESA_ENVIRONMENT = 'sandbox'
+
+# Credentials for the daraja app
+
+MPESA_CONSUMER_KEY = os.getenv("MPESA_CONSUMER_KEY")
+MPESA_CONSUMER_SECRET = os.getenv("MPESA_CONSUMER_SECRET")
+
+#Shortcode to use for transactions. For sandbox  use the Shortcode 1 provided on test credentials page
+
+MPESA_SHORTCODE = '174379'
+
+# Shortcode to use for Lipa na MPESA Online (MPESA Express) transactions
+# This is only used on sandbox, do not set this variable in production
+# For sandbox use the Lipa na MPESA Online Shorcode provided on test credentials page
+
+MPESA_EXPRESS_SHORTCODE = '174379'
+
+# Type of shortcode
+# Possible values:
+# - paybill (For Paybill)
+# - till_number (For Buy Goods Till Number)
+
+MPESA_SHORTCODE_TYPE = 'paybill'
+
+# Lipa na MPESA Online passkey
+# Sandbox passkey is available on test credentials page
+# Production passkey is sent via email once you go live
+
+MPESA_PASSKEY = os.getenv("MPESA_PASSKEY")
+
+# Username for initiator (to be used in B2C, B2B, AccountBalance and TransactionStatusQuery Transactions)
+
+MPESA_INITIATOR_USERNAME = 'initiator_username'
+
+# Plaintext password for initiator (to be used in B2C, B2B, AccountBalance and TransactionStatusQuery Transactions)
+
+MPESA_INITIATOR_SECURITY_CREDENTIAL = 'initiator_security_credential'
+

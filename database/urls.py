@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.urls import path
 
 from database import settings
-from sacco import views
+from main import views
 
 urlpatterns = [
 
