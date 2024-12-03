@@ -27,7 +27,7 @@ urlpatterns = [
 
     path('books', views.books_in_store, name='books_in_store'),
 
-    path('borrowed/books', views.borrowed, name='borrowed_books'),
+    path('borrowed/books', views.borrowed_books, name='borrowed_books'),
 
     path('fines', views.fines, name='book_fines'),
 

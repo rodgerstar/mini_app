@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-
+from main.models import Book
 
 
 def dashboard(request):
@@ -8,11 +8,13 @@ def dashboard(request):
 
 
 def books_in_store(request):
-    return render(request,'books_in_store.html')
+    books = Book.objects.all()
+    return render(request,'books_in_store.html',{'books':books})
 
 
-def borrowed(request):
-    return render(request, 'borrowed_books.html')
+def borrowed_books(request):
+    borrowed = Book.objects.all()
+    return render(request, 'borrowed_books.html',{'borrowed_items':borrowed})
 
 
 def fines(request):

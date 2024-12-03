@@ -1,31 +1,31 @@
 from django.contrib import admin
 
-from main.models import Customer, Deposit
+from main.models import Book, Student, Transaction, Payment
+
+admin.site.site_header = 'library MIS'
+admin.site.site_title = 'Manage Library MIS'
+
+class StudentsAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'phone', 'adm_no']
+    search_fields = ['name', 'email', 'phone', 'adm_no']
+    list_per_page = 30
+
+class BookAdmin(admin.ModelAdmin):
+    list_display = ['title', 'author', 'year', 'isbn', 'subject']
+    search_fields =['title', 'author', 'year', 'isbn', 'subject']
 
 
-# Register your models here.
-admin.site.site_header = 'Tujijenge Sacco Administration'
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = ['book', 'student', 'expected_return_date']
+    search_fields = ['book', 'student', 'expected_return_date']
+    list_per_page = 30
 
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ['transaction', 'code', 'status', 'created_at']
+    search_fields = ['transaction', 'code', 'status', 'created_at']
+    list_per_page = 25
 
-class CustomerAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'email', 'gender', 'dob']
-    search_fields = ['first_name', 'last_name', 'email']
-    list_filter = ['gender']
-    list_per_page = 17
-
-class DepositAdmin(admin.ModelAdmin):
-    list_display = ['customer', 'created_at', 'status', 'amount']
-    search_fields = ['customer', 'created_at', 'status', 'amount']
-    list_per_page = 17
-    list_filter = ['status']
-
-admin.site.register(Customer, CustomerAdmin)
-admin.site.register(Deposit, DepositAdmin)
-
-
-
-
-
-
-
-# pyhon manage.py --help
+admin.site.register(Student, StudentsAdmin)
+admin.site.register(Book, BookAdmin)
+admin.site.register(Transaction, TransactionAdmin)
+admin.site.register(Payment, PaymentAdmin)
