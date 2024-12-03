@@ -23,22 +23,15 @@ from main import views
 
 urlpatterns = [
 
-    path('', views.customers, name='customers'),
+    path('', views.dashboard, name='dashboard'),
 
-    path('add/customer', views.add_customer, name='add_customer'),
+    path('books', views.books_in_store, name='books_in_store'),
 
-    path('customers/delete/<int:customer_id>', views.delete_customer, name='delete_customer'),
+    path('borrowed/books', views.borrowed, name='borrowed_books'),
 
-    path('customers/deposits/<int:customer_id>', views.deposit, name='deposit'),
+    path('fines', views.fines, name='book_fines'),
 
-    path('customers/update/<int:customer_id>', views.update_customer, name='update_customer'),
+    path('issue', views.issue, name='issue_book'),
 
-    path('login', views.login_user, name='login'),
-
-    path('logout', views.signout_user, name='logout'),
-
-    path('customer-details/<int:customer_id>/', views.customer_detail, name='customer_detail'),
-
-    path('customer/search', views.search_customer, name='search_customer'),
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
