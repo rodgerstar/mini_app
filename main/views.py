@@ -23,7 +23,7 @@ def borrowed_books(request):
 
 def fines(request):
     transactions = Transaction.objects.all()
-    fines = [t for t in transactions if t.total_fine> 0]
+    fines = [t for t in transactions if t.total_fine > 0]
     return render(request, 'book_fines.html' ,{'fines':fines})
 
 
@@ -51,4 +51,8 @@ def return_book(request, id):
     messages.success(request, f'Book {transaction.book.title} was returned successfully ')
     if transaction.total_fine > 0:
         messages.warning(request, f'Book {transaction.book.title} has incurred a fine of Ksh.{transaction.total_fine} ')
+    return redirect('books_in_store')
+
+
+def pay_overdue(request):
     return redirect('books_in_store')

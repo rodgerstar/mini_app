@@ -7,12 +7,9 @@
     <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="build pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/book_fines.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/book_fines.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/books_in_store.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/books_in_store.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/borrowed_books.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/borrowed_books.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/master.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/master.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/issue.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +134,7 @@
       <workItem from="1732570691924" duration="3721000" />
       <workItem from="1733087475502" duration="36538000" />
       <workItem from="1733439715198" duration="4702000" />
+      <workItem from="1733483314137" duration="1929000" />
     </task>
     <task id="LOCAL-00001" summary="customer and deposits model">
       <option name="closed" value="true" />

@@ -28,8 +28,9 @@
                         <th>Name</th>
                         <th>Book</th>
                         <th>Adm No</th>
+                        <th>ISBN</th>
                         <th>Fines</th>
-                        <th>Return Date</th>
+                        <th>Overdue</th>
                         <th>Pay</th>
                     </tr>
                     </thead>
@@ -38,8 +39,9 @@
                         <th>Name</th>
                         <th>Book</th>
                         <th>Adm No</th>
+                        <th>ISBN</th>
                         <th>Fines</th>
-                        <th>Return Date</th>
+                        <th>Overdue</th>
                         <th>Pay</th>
                     </tr>
                     </tfoot>
@@ -47,12 +49,13 @@
                     {% for transactions in fines %}
                         <tr>
                             <td>{{ transactions.student.name }}</td>
-                            <td>{{ transactions.student.title }}</td>
+                            <td>{{ transactions.book.title }}</td>
                             <td>{{ transactions.student.adm_no }}</td>
+                            <td>{{ transactions.book.isbn }}</td>
                             <td>{{ transactions.total_fine }}</td>
-                            <td>{{ transactions.return_date }}</td>
+                            <td>{{ transactions.overdue_days }}</td>
                             <td>
-                                <a href="{% url 'issue_book' book.id %}" class="btn btn-outline-dark btn-sm">issue</a>
+                                <a href="{% url 'pay_overdue' transactions.id %}" class="btn btn-outline-dark btn-sm">Pay</a>
                             </td>
                         </tr>
 

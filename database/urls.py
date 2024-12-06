@@ -35,5 +35,7 @@ urlpatterns = [
 
     path('return/<int:id>', views.return_book, name='return_book'),
 
+    path('pay/<int:id>', views.pay_overdue, name='pay_overdue'),
+
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
