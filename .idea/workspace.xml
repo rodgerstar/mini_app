@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="added fine pages">
+    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="Mpesa Integration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
@@ -133,7 +133,7 @@
       <workItem from="1732570691924" duration="3721000" />
       <workItem from="1733087475502" duration="36538000" />
       <workItem from="1733439715198" duration="4702000" />
-      <workItem from="1733483314137" duration="9471000" />
+      <workItem from="1733483314137" duration="13363000" />
     </task>
     <task id="LOCAL-00001" summary="customer and deposits model">
       <option name="closed" value="true" />
@@ -279,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733485422008</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Mpesa Integration">
+      <option name="closed" value="true" />
+      <created>1733493487890</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1733493487890</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +312,7 @@
     <MESSAGE value="details update" />
     <MESSAGE value="build pages" />
     <MESSAGE value="added fine pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="added fine pages" />
+    <MESSAGE value="Mpesa Integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mpesa Integration" />
   </component>
 </project>

@@ -39,5 +39,11 @@ urlpatterns = [
 
     path('handle/payment/transactions', views.callback, name='callback'),
 
+    path('pie-chart', views.pie_chart, name='pie_chart'),
+
+    path('line-chart', views.line_chart, name='line_chart'),
+
+    path('bar-chart', views.bar_chart, name='bar_chart'),
+
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
