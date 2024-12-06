@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from datetime import date, timedelta
 
-from main.models import Book
+from django.contrib import messages
+from django.shortcuts import render, redirect
+
+from main.models import Book, Student, Transaction
 
 
 def dashboard(request):
@@ -13,13 +16,39 @@ def books_in_store(request):
 
 
 def borrowed_books(request):
-    borrowed = Book.objects.all()
-    return render(request, 'borrowed_books.html',{'borrowed_items':borrowed})
+    borrowed = Transaction.objects.filter(status='BORROWED')
+    return render(request, 'borrowed_books.html', {'borrowed_items': borrowed})
+
 
 
 def fines(request):
-    return render(request, 'book_fines.html')
+    transactions = Transaction.objects.all()
+    fines = [t for t in transactions if t.total_fine> 0]
+    return render(request, 'book_fines.html' ,{'fines':fines})
 
 
-def issue(request):
-    return None
+def issue(request, id):
+    book = Book.objects.get(pk=id)
+    students = Student.objects.all()
+    if request.method == 'POST':
+        student_id = request.POST['student_id']
+        student = Student.objects.get(pk=student_id)
+        expected_return_date = date.today() + timedelta(days=7)
+        transaction = Transaction.objects.create(book=book, student=student, expected_return_date=expected_return_date, status='BORROWED')
+        transaction.save()
+        messages.success(request, f'Book {book.title} was borrowed successfully ')
+        return redirect('books_in_store')
+
+
+    return render(request, 'issue.html',{'book':book,'students':students})
+
+
+def return_book(request, id):
+    transaction = Transaction.objects.get(pk=id)
+    transaction.return_date = date.today()
+    transaction.status = 'RETURNED'
+    transaction.save()
+    messages.success(request, f'Book {transaction.book.title} was returned successfully ')
+    if transaction.total_fine > 0:
+        messages.warning(request, f'Book {transaction.book.title} has incurred a fine of Ksh.{transaction.total_fine} ')
+    return redirect('books_in_store')

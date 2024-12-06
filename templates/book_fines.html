@@ -2,10 +2,74 @@
 {% load static %}
 
 {% block title %}
-    <title>Book Fines</title>
+    <title>Books Fines</title>
+{% endblock %}
+
+{% block extra_css %}
+    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
 {% endblock %}
 
 
 {% block content %}
-    show me the details
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Book Fines</h1>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Students with fines on borrowed books</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Book</th>
+                        <th>Adm No</th>
+                        <th>Fines</th>
+                        <th>Return Date</th>
+                        <th>Pay</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                   <tr>
+                        <th>Name</th>
+                        <th>Book</th>
+                        <th>Adm No</th>
+                        <th>Fines</th>
+                        <th>Return Date</th>
+                        <th>Pay</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for transactions in fines %}
+                        <tr>
+                            <td>{{ transactions.student.name }}</td>
+                            <td>{{ transactions.student.title }}</td>
+                            <td>{{ transactions.student.adm_no }}</td>
+                            <td>{{ transactions.total_fine }}</td>
+                            <td>{{ transactions.return_date }}</td>
+                            <td>
+                                <a href="{% url 'issue_book' book.id %}" class="btn btn-outline-dark btn-sm">issue</a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
 {% endblock %}

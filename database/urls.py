@@ -31,7 +31,9 @@ urlpatterns = [
 
     path('fines', views.fines, name='book_fines'),
 
-    path('issue', views.issue, name='issue_book'),
+    path('issue/<int:id>', views.issue, name='issue_book'),
+
+    path('return/<int:id>', views.return_book, name='return_book'),
 
     path('admin/', admin.site.urls),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
