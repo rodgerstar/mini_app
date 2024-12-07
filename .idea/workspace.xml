@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="PIE CHART">
+    <list default="true" id="9acee9da-ed09-4096-ba63-1f22d71e916a" name="Changes" comment="LINE CHART">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/assets/js/demo/chart-area-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/main/assets/js/demo/chart-area-demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/assets/js/demo/chart-bar-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/main/assets/js/demo/chart-bar-demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/assets/js/demo/chart-pie-demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/main/assets/js/demo/chart-pie-demo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +134,7 @@
       <workItem from="1732570691924" duration="3721000" />
       <workItem from="1733087475502" duration="36538000" />
       <workItem from="1733439715198" duration="4702000" />
-      <workItem from="1733483314137" duration="15371000" />
+      <workItem from="1733483314137" duration="17315000" />
     </task>
     <task id="LOCAL-00001" summary="customer and deposits model">
       <option name="closed" value="true" />
@@ -292,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733497266125</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="LINE CHART">
+      <option name="closed" value="true" />
+      <created>1733613421735</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1733613421735</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,6 +331,7 @@
     <MESSAGE value="added fine pages" />
     <MESSAGE value="Mpesa Integration" />
     <MESSAGE value="PIE CHART" />
-    <option name="LAST_COMMIT_MESSAGE" value="PIE CHART" />
+    <MESSAGE value="LINE CHART" />
+    <option name="LAST_COMMIT_MESSAGE" value="LINE CHART" />
   </component>
 </project>

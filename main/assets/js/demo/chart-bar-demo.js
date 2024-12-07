@@ -73,7 +73,7 @@ var myBarChart = new Chart(ctx, {
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return  number_format(value);
           }
         },
         gridLines: {
@@ -103,9 +103,35 @@ var myBarChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ':' + number_format(tooltipItem.yLabel);
         }
       }
     },
   }
+});
+
+$(document).ready(function (){
+      $.ajax({
+      url: "/bar-chart",
+      type: "GET",
+      dataType: "json",
+      success: (jsonResponse) => {
+        console.log(jsonResponse)
+        const title = jsonResponse.title;
+        const labels = jsonResponse.data.labels;
+        const datasets = jsonResponse.data.datasets;
+        // Reset the current chart
+        myBarChart.data.datasets = [];
+        myBarChart.data.labels = [];
+        // Load new data into the chart
+        myBarChart.options.title.text = title;
+        myBarChart.options.title.display = true;
+        myBarChart.data.labels = labels;
+        datasets.forEach(dataset => {
+          myBarChart.data.datasets.push(dataset);
+        });
+        myBarChart.update();
+      },
+       error: () => console.log("Failed to fetch chart filter options!")
+     });
 });

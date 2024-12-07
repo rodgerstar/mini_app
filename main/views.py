@@ -132,7 +132,7 @@ def line_chart(request):
         "data": {
             "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             "datasets": [{
-                "label": "Earnings",
+                "label": "Count",
                 "lineTension": 0.3,
                 "backgroundColor": "rgba(78, 115, 223, 0.05)",
                 "borderColor": "rgba(78, 115, 223, 1)",
@@ -144,7 +144,7 @@ def line_chart(request):
                 "pointHoverBorderColor": "rgba(78, 115, 223, 1)",
                 "pointHitRadius": 10,
                 "pointBorderWidth": 2,
-                "data": [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+                "data": [12000, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
             }],
         },
     })
@@ -159,4 +159,16 @@ def bar_chart(request):
     for i in grouped:
         numbers.append(i['count'])
         months.append(i['month'])
-    return None
+    return JsonResponse({
+        "title":"Transactions Grouped by Month",
+        "data": {
+            "labels": ["January", "February", "March", "April", "May", "June"],
+            "datasets": [{
+                "label": "Total",
+                "backgroundColor": "#4e73df",
+                "hoverBackgroundColor": "#2e59d9",
+                "borderColor": "#4e73df",
+                "data": [4215, 5312, 6251, 7841, 9821, 14984],
+            }],
+        },
+    })
