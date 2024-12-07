@@ -151,4 +151,12 @@ def line_chart(request):
 
 
 def bar_chart(request):
+    transactions = Transaction.objects.filter(created_at__year=2024)
+    grouped = transactions.annotate(month=TruncMonth('created_at')).values('month').annotate(
+        count=Count('id')).order_by('month')
+    numbers = []
+    months = []
+    for i in grouped:
+        numbers.append(i['count'])
+        months.append(i['month'])
     return None
