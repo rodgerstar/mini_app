@@ -110,7 +110,7 @@ def pie_chart(request):
         "data": {
             "labels": ["Returned", "Borrowed", "Lost"],
             "datasets": [{
-                "data": [55, 30, 15],
+                "data": [returned, borrowed, lost],
                 "backgroundColor": ['#4e73df', '#1cc88a', '#36b9cc'],
                 "hoverBackgroundColor": ['#2e59d9', '#17a673', '#2c9faf'],
                 "hoverBorderColor": "rgba(234, 236, 244, 1)",
@@ -126,11 +126,11 @@ def line_chart(request):
     months = []
     for i in grouped:
         numbers.append(i['count'])
-        months.append(i['month'])
+        months.append(i['month'].strftime('%b'))
     return JsonResponse({
         "title":"Transactions Grouped by Month",
         "data": {
-            "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            "labels": months,
             "datasets": [{
                 "label": "Count",
                 "lineTension": 0.3,
@@ -144,7 +144,7 @@ def line_chart(request):
                 "pointHoverBorderColor": "rgba(78, 115, 223, 1)",
                 "pointHitRadius": 10,
                 "pointBorderWidth": 2,
-                "data": [12000, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+                "data": numbers,
             }],
         },
     })
@@ -158,17 +158,18 @@ def bar_chart(request):
     months = []
     for i in grouped:
         numbers.append(i['count'])
-        months.append(i['month'])
+        months.append(i['month'].strftime('%b'))
+    print(months)
     return JsonResponse({
         "title":"Transactions Grouped by Month",
         "data": {
-            "labels": ["January", "February", "March", "April", "May", "June"],
+            "labels": months,
             "datasets": [{
                 "label": "Total",
                 "backgroundColor": "#4e73df",
                 "hoverBackgroundColor": "#2e59d9",
                 "borderColor": "#4e73df",
-                "data": [4215, 5312, 6251, 7841, 9821, 14984],
+                "data": numbers,
             }],
         },
     })
